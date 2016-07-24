@@ -1,0 +1,28 @@
+<h1>SSH Keys</h1>
+
+<p>PublicKey like lock</p>
+
+<p>PrivateKey like key</p>
+
+<p>A is client</p>
+
+<p>B is server</p>
+
+<p>A generate PrivateKey &amp; PublicKey, then send PublicKey to B. A can login B&rsquo;s ssh server.</p>
+
+<p>A:</p>
+
+<pre><code>ssh-keygen
+</code></pre>
+
+<p>will create /root/.ssh/id_rsa (PrivateKey) and /root/.ssh/id_rsa.pub (PublicKey)</p>
+
+<p>B:</p>
+
+<pre><code>cat id_rsa.pub &gt;&gt; /root/.ssh/authorized_keys
+</code></pre>
+
+<p>A login:</p>
+
+<pre><code>ssh root@B_host
+</code></pre>

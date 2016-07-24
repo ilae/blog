@@ -1,0 +1,9 @@
+{{range $field, $element := . }}
+            <paper-submenu>
+              <paper-item class="menu-trigger">{{$field}}</paper-item>
+              <paper-menu class="menu-content">
+{{range $postName, $postInfo := $element}}                <paper-item><a name="{{$postName}}" href="{{$postInfo.Url}}">{{$postInfo.PostName}}</a></paper-item>
+{{end}}
+              </paper-menu>
+            </paper-submenu>
+{{end}}

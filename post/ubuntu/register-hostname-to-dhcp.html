@@ -1,0 +1,10 @@
+<h1>Register Hostname To DHCP</h1>
+
+<pre><code>sudo vim /etc/dhcp/dhclient.conf
+
+send host-name 'name-you-want'
+#or
+send host-name = gethostname();
+
+sudo reboot now
+</code></pre>
