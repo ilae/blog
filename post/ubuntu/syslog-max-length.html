@@ -1,0 +1,13 @@
+<html><head></head><body><h1>Syslog Max Length</h1>
+
+<p>rsyslog</p>
+
+<pre><code>sudo vim /etc/rsyslogd.conf
+
+# add
+$MaxMessageSize 64K
+
+sudo /etc/init.d/rsyslog stop
+sudo /etc/init.d/rsyslog start
+</code></pre>
+</body></html>

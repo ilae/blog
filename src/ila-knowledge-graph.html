@@ -31,24 +31,7 @@
       <app-drawer>
         <app-toolbar>Graph Branch</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <paper-menu id="menu">
-            
-              
-              
-                
-
-              
-            
-
-            
-              
-              
-                
-                
-
-              
-            
-          </paper-menu>
+          <paper-menu id="menu"></paper-menu>
         </iron-selector>
       </app-drawer>
 
@@ -77,7 +60,7 @@
       is: 'ila-knowledge-graph',
 
       ready: function(e) {
-        fetch("/src/ila-menu.html").then((res) => res.text())
+        fetch(this.baseUrl + "/src/ila-menu.html").then((res) => res.text())
         .then(function(t) {
           this.$.menu.innerHTML = t;
         }.bind(this));
@@ -91,6 +74,10 @@
           observer: '_pageChanged'
         },
 
+        baseUrl : {
+          type: String,
+        }
+
       },
 
       observers: [
@@ -98,13 +85,18 @@
       ],
 
       _routePageChanged: function(field, page) {
-        console.log(field, page);
-        this.page = page || '/post/ubuntu/change-source';
+        //console.log(field, page);
+        if (location.hostname === "ilae.github.io") {
+          this.baseUrl = "/blog";
+        } else {
+          this.baseUrl = "";
+        }
+        this.page = page || this.baseUrl + '/post/ubuntu/change-source';
       },
 
       _pageChanged: function(page) {
-        console.log(page);
-        fetch(page + ".html").then(function(res){
+        //console.log(page);
+        fetch(this.baseUrl + page + ".html").then(function(res){
           return res.text();
         }).then(function(t) {
           this.$.card.innerHTML = t;
