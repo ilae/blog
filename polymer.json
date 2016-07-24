@@ -1,0 +1,8 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/ila-knowledge-graph.html",
+  "fragments": [
+    "src/ila-card.html",
+    "src/ila-menu.html"
+  ]
+}
